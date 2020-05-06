@@ -100,27 +100,35 @@ namespace RentCars.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "ClientDatas",
-                columns: new[] { "ClientId", "Address", "City", "Email", "FirstName", "IdNumber", "LastName", "MiddleName", "Phone" },
-                values: new object[,]
-                {
-                    { 1, "Aleea Eprubetei 21-23", "Bucuresti", "marin.cezar45@gmail.com", "Cezar", "963747", "Marin", null, "0755356570" },
-                    { 2, "Aleea Eprubetei 21-23", "Bucuresti", "marin.irina@gmail.com", "Irina", "963748", "Marin", null, "0755356570" }
-                });
+                 table: "Locations",
+                 columns: new[] { "LocationId", "Address1", "Address2", "Address3", "CityTown", "Country", "PostalCode", "StateProvince", "VenueName" },
+                 values: new object[] { 1, "123 Main Street", null, null, "Atlanta", "USA", "12345", "GA", "Atlanta Convention Center" });
 
             migrationBuilder.InsertData(
-                table: "Locations",
-                columns: new[] { "LocationId", "Address1", "Address2", "Address3", "CityTown", "Country", "PostalCode", "StateProvince", "VenueName" },
-                values: new object[] { 1, "Calea Bucurestilor 210", null, null, "Otopeni", "ROU", "12345", "IF", "Otopeni Auto" });
+                table: "ClientDatas",
+                columns: new[] { "SpeakerId", "IdNumber", "Address", "City", "FirstName", "Phone", "LastName", "MiddleName", "Email" },
+                values: new object[] { 1, "http://wildermuth.com", "Wilder Minds LLC", "http://wilderminds.com", "Shawn", "shawnwildermuth", "Wildermuth", null, "shawnwildermuth" });
+
+            migrationBuilder.InsertData(
+                table: "ClientDatas",
+                columns: new[] { "SpeakerId", "IdNumber", "Address", "City", "FirstName", "Phone", "LastName", "MiddleName", "Email" },
+                values: new object[] { 2, "http://shawnandresa.com", "Wilder Minds LLC", "http://wilderminds.com", "Resa", "resawildermuth", "Wildermuth", null, "resawildermuth" });
+
+            migrationBuilder.InsertData(
+                table: "Rents",
+                columns: new[] { "CarId", "StartDate", "Zile", "LocationId", "Model", "Marca" },
+                values: new object[] { 1, new DateTime(2018, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, "ATL2018", "Atlanta Code Camp" });
 
             migrationBuilder.InsertData(
                 table: "Price",
-                columns: new[] { "AsigId", "ClientDataClientId", "Level", "NumeAsig", "RentCarId" },
-                values: new object[,]
-                {
-                    { 1, null, 1, null, null },
-                    { 2, null, 3, "Asigurare Basic", null }
-                });
+                columns: new[] { "AsigId", "RentId", "Level", "ClientId", "NumeAsig" },
+                values: new object[] { 1, 1, 100, 1, "Entity Framework From Scratch" });
+
+            migrationBuilder.InsertData(
+                table: "Price",
+                columns: new[] { "AsigId", "RentId", "Level", "ClientId", "NumeAsig" },
+                values: new object[] { 2, 1, 200, 2, "Writing Sample Data Made Easy" });
+
 
             migrationBuilder.InsertData(
                 table: "Rents",

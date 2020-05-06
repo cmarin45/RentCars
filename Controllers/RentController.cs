@@ -22,11 +22,11 @@ namespace RentCars.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<ActionResult<RentModel[]>> Get()
+        public async Task<ActionResult<RentModel[]>> Get(bool includePrice = false)
         {
             try
             {
-                var results = await _repository.GetAllRentsAsync(); 
+                var results = await _repository.GetAllRentsAsync(includePrice); 
                 return _mapper.Map<RentModel[]>(results);
             }
             catch (Exception)

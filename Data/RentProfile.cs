@@ -11,7 +11,8 @@ namespace RentCars.Data
     {
         public RentProfile()
         {
-            this.CreateMap<Rent, RentModel>();
+            this.CreateMap<Rent, RentModel>()
+            .ForMember(c => c.Venue, o => o.MapFrom(m => m.Location.VenueName));
         }
     }
 }
